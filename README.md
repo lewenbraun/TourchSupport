@@ -1,6 +1,8 @@
 # TourchSupport
 
-## Технологии
+Winning Hackathon Project 🏆
+
+## Technologies
 - Laravel
 - Livewire
 - Filament
@@ -9,78 +11,73 @@
 - Pandas
 - Picle
 - Sklearn
-- Sail (docker)
+- Sail (Docker)
 
-## Описание
-Веб-приложение TourchSupport позволяет операторам улучишить работу с заявками
-## Инструкция по установке
-Для проекта потребуется установить [composer](https://getcomposer.org/) и
-[docker](https://docs.docker.com/engine/install/) + [docker-compose](https://docs.docker.com/compose/install/linux/)
+## Description
+TourchSupport is a web application designed to help operators improve the handling of support tickets.
 
-### Подготовка к запуску
+## Installation Instructions
+To set up the project, you will need to install [Composer](https://getcomposer.org/) as well as [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/linux/).
 
+### Preparation for Launch
 
-#### Запуск окружения и проекта.
+#### Setting Up the Environment and Project
 
-Закинуть файл [train_data.csv](https://disk.yandex.ru/d/8bBpiHxJHW-UQg) в папку ./python
+1. Place the file [train_data.csv](https://disk.yandex.ru/d/8bBpiHxJHW-UQg) into the `./python` folder.
+2. Run the following commands:
+
+   ```bash
+   composer install
+
+   cp env.example .env
+
+   ./vendor/bin/sail up -d
+
+   ./vendor/bin/sail artisan key:generate
+
+   ./vendor/bin/sail artisan migrate
+
+   ./vendor/bin/sail artisan db:seed
+
+   ./vendor/bin/sail npm run dev
+   ```
+
+### Local Access
+
+- **Frontend (Submit a Ticket):** [http://localhost](http://localhost)
+- **Admin Panel (Ticket Management):** [http://localhost/admin](http://localhost/admin)
+
+To create an admin user for the panel, run:
 
 ```bash
-composer install
-
-cp env.example .env
-
-./vendor/bin/sail up -d
-
-./vendor/bin/sail artisan key:generate
-
-./vendor/bin/sail artisan migrate
-
-./vendor/bin/sail artisan db:seed
-
-./vendor/bin/sail npm run dev
+./vendor/bin/sail artisan make:filament-user
 ```
 
-### Доступ локально к приложению
+### Server Access
 
-Перейти - [Фронт с созданием заявкой](http://localhost)
+- **Production Site:** [http://79.174.95.30/](http://79.174.95.30/)
 
-Перейти - [Админка с заявкой](http://localhost/admin)
-<br>
+## Backend Requirements
+| Requirements                                                                                             | Completed? |
+|----------------------------------------------------------------------------------------------------------|:----------:|
+| 1. Use a database (any type); access must be provided for evaluating the database structure               |     ✅     |
+| 2. Create an administrative panel for viewing and managing support tickets                              |     ✅     |
+| 3. Display analytical statistics in a user-friendly format                                              |     ✅     |
+| 4. Ensure the service runs stably without unexpected crashes                                             |     ✅     |
 
-Создание пользователя для админ панели - ```./vendor/bin/sail artisan make:filament-user```
+## Frontend Requirements
+| Requirements                                                   | Completed? |
+|---------------------------------------------------------------|:----------:|
+| 1. Develop a website interface for submitting support tickets  |     ✅     |
+| 2. Implement proper project architecture                        |     ✅     |
+| 3. Ensure responsiveness across different devices               |     ✅     |
+| 4. Guarantee stable operation of the service                      |     ✅     |
 
-### Доступ на сервере к приложению
-
-Перейти - [Сайт на проде](http://79.174.95.30/)
-
-## Требования для бэкенда
-| Требования                                                                                             | Выполнено или нет | 
-|--------------------------------------------------------------------------------------------------------|:-----------------:|
-| 1. Использование база данных (любой), необходимо предоставить доступ, для оценки структуры базы данных |         ✅         |
-| 2. Создание административной панели для вывода и работы с заявками                                     |         ✅         |
-| 3. Вывод аналитической статистики в удобном виде                                                       |         ✅         |
-| 4. Сервис должен работать стабильно, без неожиданных падений                                           |         ✅         |
-
-<br>
-
-## Требования для фронтенда
-| Требования                                                   | Выполнено или нет | 
-|--------------------------------------------------------------|:-----------------:|
-| 1. Создание интерфейса сайта с заявкой для обращение         |         ✅         |
-| 2. Правильное проектирование проекта                         |         ✅         |
-| 3. Адаптивность под разные устройства                        |         ✅         |
-| 4. Сервис должен работать стабильно |         ✅         |
-
-<br>
-
-### Требование к продукту после прохождения статуса MVP
-| Требования                                                    | Выполнено или нет | 
-|---------------------------------------------------------------|:-----------------:|
-| 1. Возможность регистрации, авторизации в сервисе             |         ✅         |
-| 2. Обучение модели для увеличения точности текста             |         ✅         |
-| 3. Машинно зрение для обработки вложений к обращением         |         ✅         |
-| 4. Мониторинг для большей статистики в административной части |         ✅        |
-| 5. Чат с сотрудником                                          |         ✅         |
-
-<br>
-
+## Post-MVP Product Requirements
+| Requirements                                                            | Completed? |
+|-------------------------------------------------------------------------|:----------:|
+| 1. Provide user registration and authentication functionality            |     ✅     |
+| 2. Train a model to enhance text accuracy                                |     ✅     |
+| 3. Implement computer vision to process attachments with support tickets  |     ✅     |
+| 4. Introduce enhanced monitoring for analytics in the admin panel         |     ✅     |
+| 5. Integrate a chat feature for direct communication with staff           |     ✅     |
